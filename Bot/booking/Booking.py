@@ -19,7 +19,7 @@ class Booking(webdriver.Chrome):
         self.teardown = teardown
         os.environ['PATH'] += self.driver_path
         super(Booking, self).__init__(options=options)
-        self.implicitly_wait(10)
+        self.implicitly_wait(5)
         self.maximize_window()
 
     def __exit__(self, exc_type, exc_val, exc_tb):
@@ -117,6 +117,6 @@ class Booking(webdriver.Chrome):
     def report_results(self):
         hotel_boxes = self.find_elements(By.CSS_SELECTOR, 'div[data-testid="property-card"]')
         report = booking_report.BookingReport(hotel_boxes)
-        table = PrettyTable(field_names=["Hotel Name", "Hotel Price"])
+        table = PrettyTable(field_names=["Hotel Name", "Hotel Price", "Hotel score"])
         table.add_rows(report.pull_hotel_attributes())
         print(table)
