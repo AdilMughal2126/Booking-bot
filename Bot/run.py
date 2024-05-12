@@ -7,3 +7,5 @@ with Booking() as bot:
     bot.select_dates('2024-05-15', '2024-05-20')
     bot.select_occupancy(10)
     bot.click_search()
+    bot.apply_filtration()
+    bot.report_results()
